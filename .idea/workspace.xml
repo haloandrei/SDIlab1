@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a5eab2e-9ebe-413a-a1fe-b9cb1dff2193" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -10,10 +9,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/ui/Console.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ui/Console.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Console.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,12 +138,24 @@
       <option name="presentableId" value="Default" />
       <updated>1583145049934</updated>
       <workItem from="1583145054809" duration="4972000" />
-      <workItem from="1583164357106" duration="1386000" />
+      <workItem from="1583164357106" duration="2769000" />
     </task>
+    <task id="LOCAL-00001" summary="new files">
+      <created>1583165874835</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583165874835</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new files" />
+    <option name="LAST_COMMIT_MESSAGE" value="new files" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="90" key="#Project_Structure" timestamp="1583145324272">
@@ -156,10 +166,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="485" y="128" key="#Unnamed/0.0.1536.864@0.0.1536.864" timestamp="1583145757460" />
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583145730804">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583166862038">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1583145730804" />
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1583166862038" />
     <state x="548" y="137" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1583145632113">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -168,26 +178,34 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="498" y="215" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.864@0.0.1536.864" timestamp="1583145755907" />
-    <state x="363" y="26" key="CommitChangelistDialog2" timestamp="1583165847928">
+    <state x="516" y="165" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583166299157">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="363" y="26" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1583165847928" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1583165867686">
+    <state x="516" y="165" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.864@0.0.1536.864" timestamp="1583166299157" />
+    <state x="363" y="26" key="CommitChangelistDialog2" timestamp="1583165881722">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1583165867686" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1583165867686">
+    <state x="363" y="26" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1583165881722" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1583166297934">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1583165867686" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1583165867686">
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1583166297934" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1583166949198">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1583165867686" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1583165867686">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1583166949198" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1583166949197">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1583165867686" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1583166949197" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1583166949197">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1583166949197" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1583166949198">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1583166949198" />
     <state width="1493" height="277" key="GridCell.Tab.1.bottom" timestamp="1583165233694">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -208,5 +226,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="465" y="256" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1583164357871" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1583166880487">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1583166880487" />
   </component>
 </project>

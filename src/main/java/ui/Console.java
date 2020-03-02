@@ -50,16 +50,16 @@ public class Console {
     }
 
     private Movie readMovie() {
-        System.out.println("Read Movie {id,serialNumber, name, group}");
+        System.out.println("Read Movie {id,type, name, rating}");
 
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         try {
             Long id = Long.valueOf(bufferRead.readLine());// ...
-            String serialNumber = bufferRead.readLine();
+            String type = bufferRead.readLine();
             String name = bufferRead.readLine();
-            int group = Integer.parseInt(bufferRead.readLine());// ...
+            int rating = Integer.parseInt(bufferRead.readLine());// ...
 
-            Movie Movie = new Movie(serialNumber, name, group);
+            Movie Movie = new Movie(type, name, rating);
             Movie.setId(id);
 
             return Movie;
