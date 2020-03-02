@@ -14,6 +14,7 @@ public class main {
          Repository<Long, Movie> MovieRepository = new InMemoryRepository<>(MovieValidator);
          MovieService MovieService = new MovieService(MovieRepository);
          Console console = new Console(MovieService);
+
          console.runConsole();
 
             //file repo

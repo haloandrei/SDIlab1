@@ -34,7 +34,9 @@ public class Console {
     }
 
     private void addMovies() {
-        while (true) {
+        int count = 2;
+        while (count > 0) {
+            count--;
             Movie Movie = readMovie();
             if (Movie == null || Movie.getId() < 0) {
                 break;
