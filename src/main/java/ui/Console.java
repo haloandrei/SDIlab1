@@ -17,10 +17,10 @@ public class Console {
     }
 
     public void runConsole() {
-
-
-        addMovies();
-        printAllMovies();
+        //boolean running = true;
+        //while(running){
+        //    addMovies();
+            printAllMovies();
     }
 
     private void printAllMovies() {
