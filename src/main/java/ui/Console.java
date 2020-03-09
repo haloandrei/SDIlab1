@@ -19,17 +19,19 @@ public class Console {
     public void runConsole() {
 
         printAllMovies();
-        System.out.print( "Enter minimum rating: " );
         Scanner myInput = new Scanner( System.in );
         int rating = myInput.nextInt();
-        printFilteredMovies(rating);
+        printFiltered(rating);
     }
 
     private void printAllMovies() {
         Set<Movie> Movies = movieService.getAllMovies();
         Movies.stream().forEach(System.out::println);
     }
-
+    private void printFiltered(int rating){
+        Set<Movie> set= (Set<Movie>) movieService.findFilteredRatingMovies(rating);
+        set.stream().forEach(System.out::println);
+    }
     private void printFilteredMovies(int rating){
         Set<Movie> movies = movieService.getAllMovies();
         int i=-1;

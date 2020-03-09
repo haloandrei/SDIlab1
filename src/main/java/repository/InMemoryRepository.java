@@ -1,6 +1,7 @@
 package repository;
 
 import domain.BaseEntity;
+import domain.Movie;
 import domain.validators.Validator;
 import domain.validators.ValidatorException;
 
@@ -20,6 +21,7 @@ public class InMemoryRepository<ID, T extends BaseEntity<ID>> implements Reposit
         this.validator = validator;
         entities = new HashMap<>();
     }
+
 
     @Override
     public Optional<T> findOne(ID id) {
