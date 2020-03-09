@@ -7,6 +7,8 @@ import service.MovieService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Console {
@@ -17,15 +19,36 @@ public class Console {
     }
 
     public void runConsole() {
-        
-        addMovies();
+
         printAllMovies();
+        Scanner myInput = new Scanner( System.in );
+        int rating = myInput.nextInt();
+        printFiltered(rating);
+
     }
 
     private void printAllMovies() {
         Set<Movie> Movies = movieService.getAllMovies();
         Movies.stream().forEach(System.out::println);
     }
+
+    private void printFiltered(int rating){
+        Set<Movie> set= (Set<Movie>) movieService.findFilteredRatingMovies(rating);
+        set.stream().forEach(System.out::println);
+    }
+    private void printFilteredMovies(int rating){
+        Set<Movie> movies = movieService.getAllMovies();
+        int i=-1;
+        Movie[] list_of_movies = new Movie[movies.size()];
+        for (Movie movie : movies) {
+            if (movie.getRating() >= rating) {
+                i++;
+                list_of_movies[i] = movie;
+            }
+        }
+        System.out.println(Arrays.toString(list_of_movies));
+    }
+
 
     private void addMovies() {
         int count = 1;
