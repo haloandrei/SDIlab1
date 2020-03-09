@@ -17,16 +17,11 @@ public class Console {
     }
 
     public void runConsole() {
+
+
         addMovies();
         printAllMovies();
-        //filterStudents();
     }
-
-//    private void filterStudents() {
-//        System.out.println("filtered students (name containing 's2'):");
-//        Set<Movie> Movies = movieService.filterMoviesByName("s2");
-//        Movies.stream().forEach(System.out::println);
-//    }
 
     private void printAllMovies() {
         Set<Movie> Movies = movieService.getAllMovies();
@@ -34,7 +29,7 @@ public class Console {
     }
 
     private void addMovies() {
-        int count = 2;
+        int count = 1;
         while (count > 0) {
             count--;
             Movie Movie = readMovie();
