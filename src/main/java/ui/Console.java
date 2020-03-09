@@ -17,8 +17,7 @@ public class Console {
     }
 
     public void runConsole() {
-
-
+        
         addMovies();
         printAllMovies();
     }
