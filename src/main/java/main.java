@@ -1,7 +1,6 @@
 import domain.Movie;
 import domain.validators.MovieValidator;
 import domain.validators.Validator;
-import repository.InMemoryRepository;
 import repository.MovieFileRepository;
 import repository.Repository;
 import service.MovieService;
