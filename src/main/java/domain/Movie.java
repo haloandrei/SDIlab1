@@ -4,15 +4,21 @@ public class Movie extends BaseEntity<Long>{
     private String type;
     private String name;
     private int rating;
+    private int price;
 
     public Movie() {
     }
 
-    public Movie(String type, String name, int rating) {
+    public Movie(String type, String name, int rating, int price) {
         this.type = type;
         this.name = name;
         this.rating = rating;
+        this.price=price;
     }
+
+    public int getPrice() { return price; }
+
+    public void setPrice(int price) { this.price = price; }
 
     public String getType() {
         return type;
@@ -47,6 +53,7 @@ public class Movie extends BaseEntity<Long>{
 
         if (rating != Movie.rating) return false;
         if (!type.equals(Movie.type)) return false;
+        if(price != Movie.price) return false;
         return name.equals(Movie.name);
 
     }
@@ -56,6 +63,7 @@ public class Movie extends BaseEntity<Long>{
         int result = type.hashCode();
         result = 31 * result + name.hashCode();
         result = 31 * result + rating;
+        result = 31 * result + price;
         return result;
     }
 
@@ -65,6 +73,7 @@ public class Movie extends BaseEntity<Long>{
                 "type='" + type + '\'' +
                 ", name='" + name + '\'' +
                 ", rating=" + rating +
-                "} " + super.toString();
+                ", price=" + price +
+                '}';
     }
 }
