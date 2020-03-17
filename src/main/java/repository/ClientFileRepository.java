@@ -1,6 +1,7 @@
 package repository;
 
-import domain.Movie;
+import domain.Client;
+import domain.Client;
 import domain.validators.Validator;
 import domain.validators.ValidatorException;
 
@@ -14,10 +15,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class MovieFileRepository extends InMemoryRepository<Long, Movie> {
+public class ClientFileRepository extends InMemoryRepository<Long, Client> {
     private String fileName;
 
-    public MovieFileRepository(Validator<Movie> validator, String fileName) {
+    public ClientFileRepository(Validator<Client> validator, String fileName) {
         super(validator);
         this.fileName = fileName;
 
@@ -32,15 +33,15 @@ public class MovieFileRepository extends InMemoryRepository<Long, Movie> {
                 List<String> items = Arrays.asList(line.split(","));
 
                 Long id = Long.valueOf(items.get(0));
-                String serialNumber = items.get(1);
-                String name = items.get((2));
-                int group = Integer.parseInt(items.get(3));
-                int price = Integer.parseInt(items.get(4));
-                Movie movie = new Movie(serialNumber, name, group,price);
-                movie.setId(id);
+                String name = items.get(1);
+                String rented_movies_string = items.get((2));
+                List<String> rented_movies = Arrays.asList(rented_movies_string.split(";"));
+                int moneySpent = Integer.parseInt(items.get(3));
+                Client Client = new Client(name, rented_movies, moneySpent);
+                Client.setId(id);
 
                 try {
-                    super.save(movie);
+                    super.save(Client);
                 } catch (ValidatorException e) {
                     e.printStackTrace();
                 }
@@ -51,8 +52,8 @@ public class MovieFileRepository extends InMemoryRepository<Long, Movie> {
     }
 
     @Override
-    public Optional<Movie> save(Movie entity) throws ValidatorException {
-        Optional<Movie> optional = super.save(entity);
+    public Optional<Client> save(Client entity) throws ValidatorException {
+        Optional<Client> optional = super.save(entity);
         if (optional.isPresent()) {
             return optional;
         }
@@ -60,12 +61,12 @@ public class MovieFileRepository extends InMemoryRepository<Long, Movie> {
         return Optional.empty();
     }
 
-    private void saveToFile(Movie entity) {
+    private void saveToFile(Client entity) {
         Path path = Paths.get(fileName);
 
         try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
             bufferedWriter.write(
-                    entity.getId() + "," + entity.getType() + "," + entity.getName() + "," + entity.getRating() + "," + entity.getPrice());
+                    entity.getId() + "," + entity.getName() + "," + entity.getRented_movies() + "," + entity.getMoneySpent());
             bufferedWriter.newLine();
         } catch (IOException e) {
             e.printStackTrace();
