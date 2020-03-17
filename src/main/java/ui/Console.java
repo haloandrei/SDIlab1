@@ -1,7 +1,9 @@
 package ui;
 
+import domain.Client;
 import domain.Movie;
 import domain.validators.ValidatorException;
+import service.ClientService;
 import service.MovieService;
 
 import java.io.BufferedReader;
@@ -11,38 +13,37 @@ import java.util.*;
 
 public class Console {
     private MovieService movieService;
-
-    public Console(MovieService studentService) {
-        this.movieService = studentService;
+    private ClientService clientService;
+    public Console(MovieService movieService, ClientService clientService) {
+        this.movieService = movieService;
+        this.clientService = clientService;
     }
 
     public void runConsole() {
 
         printAllMovies();
+        printAllClients();
         Scanner myInput = new Scanner( System.in );
         int rating = myInput.nextInt();
-        printFiltered(rating);
+        printFilteredMovie(rating);
     }
 
     private void printAllMovies() {
         Set<Movie> Movies = movieService.getAllMovies();
         Movies.stream().forEach(System.out::println);
     }
-    private void printFiltered(int rating){
+    private void printAllClients() {
+        Set<Client> Clients = clientService.getAllClients();
+        Clients.stream().forEach(System.out::println);
+    }
+
+    private void printFilteredMovie(int rating){
         Set<Movie> set= (Set<Movie>) movieService.findFilteredRatingMovies(rating);
         set.stream().forEach(System.out::println);
     }
-    private void printFilteredMovies(int rating){
-        Set<Movie> movies = movieService.getAllMovies();
-        int i=-1;
-        Movie[] list_of_movies = new Movie[movies.size()];
-        for (Movie movie : movies) {
-            if (movie.getRating() >= rating) {
-                i++;
-                list_of_movies[i] = movie;
-            }
-        }
-        System.out.println(Arrays.toString(list_of_movies));
+    private void printFilteredClient(int money_spent){
+        Set<Client> set= (Set<Client>) clientService.findFilteredMoneySpentClients(money_spent);
+        set.stream().forEach(System.out::println);
     }
 
     private void addMovies() {
@@ -60,6 +61,21 @@ public class Console {
             }
         }
     }
+    private void addClients() {
+        int count = 1;
+        while (count > 0) {
+            count--;
+            Client Client = readClient();
+            if (Client == null || Client.getId() < 0) {
+                break;
+            }
+            try {
+                clientService.addClient(Client);
+            } catch (ValidatorException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     private Movie readMovie() {
         System.out.println("Read Movie {id,serialNumber, name, group}");
@@ -70,11 +86,33 @@ public class Console {
             String serialNumber = bufferRead.readLine();
             String name = bufferRead.readLine();
             int group = Integer.parseInt(bufferRead.readLine());// ...
+            int price = Integer.parseInt(bufferRead.readLine());// ...
 
-            Movie Movie = new Movie(serialNumber, name, group);
+            Movie Movie = new Movie(serialNumber, name, group, price);
             Movie.setId(id);
 
             return Movie;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    private Client readClient() {
+        System.out.println("Read Client {id, name, rented_movies, money_spent}");
+
+        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            Long id = Long.valueOf(bufferRead.readLine());// ...
+            String name = bufferRead.readLine();
+            String rented_movies_string=bufferRead.readLine();
+            List<String> rented_movies = Arrays.asList(rented_movies_string.split(";"));
+            int money_spent = Integer.parseInt(bufferRead.readLine());// ...
+
+            Client Client = new Client(name, rented_movies, money_spent);
+            Client.setId(id);
+
+            return Client;
         } catch (IOException ex) {
             ex.printStackTrace();
         }
