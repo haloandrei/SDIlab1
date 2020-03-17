@@ -19,22 +19,22 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class XmlMovieRepository{
-    public static void main(String[] args) {
-        try {
-            List<Movie> books = loadData();
-            books.forEach(System.out::println);
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            saveMovie(new Movie("action","Some action movie",4));
-        } catch (ParserConfigurationException | IOException | SAXException | TransformerException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("hello");
-    }
+//    public static void main(String[] args) {
+//        try {
+//            List<Movie> books = loadData();
+//            books.forEach(System.out::println);
+//        } catch (ParserConfigurationException | IOException | SAXException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            saveMovie(new Movie("action","Some action movie",4));
+//        } catch (ParserConfigurationException | IOException | SAXException | TransformerException e) {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println("hello");
+//    }
 
     private static String getTextFromTagName(Element parentElement, String tagName) {
         Node node = parentElement.getElementsByTagName(tagName).item(0);
@@ -125,6 +125,4 @@ public class XmlMovieRepository{
         element.setTextContent(textContent);
         parentNode.appendChild(element);
     }
-
-
 }
