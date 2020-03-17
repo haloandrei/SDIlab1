@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class MovieFileRepository extends DeprecatedInMemoryRepository<Long, Movie> {
+public class MovieFileRepository extends InMemoryRepository<Long, Movie> {
     private String fileName;
 
     public MovieFileRepository(Validator<Movie> validator, String fileName) {

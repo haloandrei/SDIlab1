@@ -16,7 +16,6 @@ public class main {
          Console console = new Console(MovieService);
 
          console.runConsole();
-
         }
 
 }

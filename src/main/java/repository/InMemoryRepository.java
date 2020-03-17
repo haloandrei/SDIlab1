@@ -12,12 +12,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 
-public class DeprecatedInMemoryRepository<ID, T extends BaseEntity<ID>> implements Repository<ID, T> {
+public class InMemoryRepository<ID, T extends BaseEntity<ID>> implements Repository<ID, T> {
 
     private Map<ID, T> entities;
     private Validator<T> validator;
 
-    public DeprecatedInMemoryRepository(Validator<T> validator) {
+    public InMemoryRepository(Validator<T> validator) {
         this.validator = validator;
         entities = new HashMap<>();
     }
