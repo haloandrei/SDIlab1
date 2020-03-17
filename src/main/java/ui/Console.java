@@ -1,7 +1,9 @@
 package ui;
 
+import domain.Client;
 import domain.Movie;
 import domain.validators.ValidatorException;
+import service.ClientService;
 import service.MovieService;
 
 import java.io.BufferedReader;
@@ -11,9 +13,11 @@ import java.util.*;
 
 public class Console {
     private MovieService movieService;
+    private ClientService clientService;
 
-    public Console(MovieService studentService) {
-        this.movieService = studentService;
+    public Console(MovieService movieService, ClientService clientService) {
+        this.movieService = movieService;
+        this.clientService = clientService;
     }
 
     public void runConsole() {
