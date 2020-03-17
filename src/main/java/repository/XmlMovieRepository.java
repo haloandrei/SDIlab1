@@ -52,7 +52,7 @@ public class XmlMovieRepository{
 //        book.setTitle(title);
         movie.setName(getTextFromTagName(movieElement, "name"));
         movie.setRating(Integer.parseInt(getTextFromTagName(movieElement, "rating")));
-       // movie.setPrice(Float.parseFloat(getTextFromTagName(movieElement, "price")));
+        movie.setPrice(Integer.parseInt(getTextFromTagName(movieElement, "price")));
 
         return movie;
     }
@@ -113,7 +113,7 @@ public class XmlMovieRepository{
 //        bookElement.appendChild(titleElement);
         appendChildWithTextToNode(document, movieElement, "name", movie.getName());
         appendChildWithTextToNode(document, movieElement, "rating", String.valueOf(movie.getRating()));
-
+        appendChildWithTextToNode(document, movieElement, "rating", String.valueOf(movie.getRating()));
         return movieElement;
     }
 
