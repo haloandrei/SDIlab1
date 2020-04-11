@@ -98,7 +98,6 @@ public class XmlClientRepository {
 //        titleElement.setTextContent(book.getTitle());
 //        bookElement.appendChild(titleElement);
         appendChildWithTextToNode(document, clientElement, "moneySpent", String.valueOf(client.getMoneySpent()));
-        client.getRented_movies().stream().forEach(x -> appendChildWithTextToNode(document, clientElement, "movieRented", x));
 
         return clientElement;
     }

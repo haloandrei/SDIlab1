@@ -1,8 +1,10 @@
 package ui;
 
+import domain.Acquisition;
 import domain.Client;
 import domain.Movie;
 import domain.validators.ValidatorException;
+import service.AcquisitionService;
 import service.ClientService;
 import service.MovieService;
 
@@ -14,16 +16,19 @@ import java.util.*;
 public class Console {
     private MovieService movieService;
     private ClientService clientService;
+    private AcquisitionService acquisitionService;
 
-    public Console(MovieService movieService, ClientService clientService) {
+    public Console(MovieService movieService, ClientService clientService,AcquisitionService acquisitionService) {
         this.movieService = movieService;
         this.clientService = clientService;
+        this.acquisitionService = acquisitionService;
     }
 
     public void runConsole() {
 
         printAllMovies();
         printAllClients();
+        printAllAcquisitions();
         Scanner myInput = new Scanner( System.in );
         int rating = myInput.nextInt();
         printFilteredMovie(rating);
@@ -36,6 +41,10 @@ public class Console {
     private void printAllClients() {
         Set<Client> Clients = clientService.getAllClients();
         Clients.stream().forEach(System.out::println);
+    }
+    private void printAllAcquisitions() {
+        Set<Acquisition> Acquisitions = acquisitionService.getAllAcquisition();
+        Acquisitions.stream().forEach(System.out::println);
     }
 
     private void printFilteredMovie(int rating){
@@ -55,7 +64,7 @@ public class Console {
         System.out.println(Arrays.toString(list_of_movies));
     }
 
-    private void addMovies() {
+    public void addMovies() {
         int count = 1;
         while (count > 0) {
             count--;
@@ -86,18 +95,20 @@ public class Console {
         }
     }
 
+    //TODO - Add Acquisitions?? or just make a function that a client bought book X?? no, stick with addAcquisition
+
     private Movie readMovie() {
-        System.out.println("Read Movie {id,serialNumber, name, group}");
+        System.out.println("Read Movie {id,serialNumber, name, rating, price}");
 
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         try {
             Long id = Long.valueOf(bufferRead.readLine());// ...
             String serialNumber = bufferRead.readLine();
             String name = bufferRead.readLine();
-            int group = Integer.parseInt(bufferRead.readLine());// ...
+            int rating = Integer.parseInt(bufferRead.readLine());// ...
             int price = Integer.parseInt(bufferRead.readLine());// ...
 
-            Movie Movie = new Movie(serialNumber, name, group, price);
+            Movie Movie = new Movie(serialNumber, name, rating, price);
             Movie.setId(id);
 
             return Movie;
@@ -118,7 +129,7 @@ public class Console {
             List<String> rented_movies = Arrays.asList(rented_movies_string.split(";"));
             int money_spent = Integer.parseInt(bufferRead.readLine());// ...
 
-            Client Client = new Client(name, rented_movies, money_spent);
+            Client Client = new Client(name,  money_spent);
             Client.setId(id);
 
             return Client;
