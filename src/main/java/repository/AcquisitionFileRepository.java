@@ -1,9 +1,11 @@
 package repository;
 
-import domain.Client;
+import com.sun.org.apache.xpath.internal.axes.AxesWalker;
+import domain.Acquisition;
 import domain.Client;
 import domain.validators.Validator;
 import domain.validators.ValidatorException;
+import domain.Pair;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -11,14 +13,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-public class ClientFileRepository extends InMemoryRepository<Long, Client> {
+public class AcquisitionFileRepository extends InMemoryRepository<Pair<Long, Long>, Acquisition>{
     private String fileName;
 
-    public ClientFileRepository(Validator<Client> validator, String fileName) {
+    public AcquisitionFileRepository(Validator<Acquisition> validator, String fileName) {
         super(validator);
         this.fileName = fileName;
 
@@ -32,16 +37,22 @@ public class ClientFileRepository extends InMemoryRepository<Long, Client> {
             Files.lines(path).forEach(line -> {
                 List<String> items = Arrays.asList(line.split(","));
 
-                Long id = Long.valueOf(items.get(0));
-                String name = items.get(1);
-                String rented_movies_string = items.get((2));
-                List<String> rented_movies = Arrays.asList(rented_movies_string.split(";"));
-                int moneySpent = Integer.parseInt(items.get(3));
-                Client Client = new Client(name, moneySpent);
-                Client.setId(id);
+                Pair<Long,Long> id =new Pair<>(Long.valueOf(items.get(0)), Long.valueOf(items.get(1)));
+                int moneySpent = Integer.parseInt(items.get(2));
+                String dateString = items.get(3);
 
+                Acquisition acquisition= new Acquisition();
                 try {
-                    super.save(Client);
+                    Date date = acquisition.getDateFormat().parse(dateString);
+                    acquisition.setDate(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                acquisition.setId(id);
+                acquisition.setPriceBought(moneySpent);
+                try {
+                    super.save(acquisition);
                 } catch (ValidatorException e) {
                     e.printStackTrace();
                 }
@@ -52,8 +63,8 @@ public class ClientFileRepository extends InMemoryRepository<Long, Client> {
     }
 
     @Override
-    public Optional<Client> save(Client entity) throws ValidatorException {
-        Optional<Client> optional = super.save(entity);
+    public Optional<Acquisition> save(Acquisition entity) throws ValidatorException {
+        Optional<Acquisition> optional = super.save(entity);
         if (optional.isPresent()) {
             return optional;
         }
@@ -61,12 +72,12 @@ public class ClientFileRepository extends InMemoryRepository<Long, Client> {
         return Optional.empty();
     }
 
-    private void saveToFile(Client entity) {
+    private void saveToFile(Acquisition entity) {
         Path path = Paths.get(fileName);
 
         try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
             bufferedWriter.write(
-                    entity.getId() + "," + entity.getName() + "," + entity.getMoneySpent());
+                    entity.getId() + "," + entity.getPriceBought() + "," + entity.getDate());
             bufferedWriter.newLine();
         } catch (IOException e) {
             e.printStackTrace();
