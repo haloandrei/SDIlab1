@@ -16,6 +16,7 @@ import service.AcquisitionService;
 import service.ClientService;
 import service.MovieService;
 import ui.Console;
+import ui.DataBase;
 
 public class main {
 
@@ -33,7 +34,9 @@ public class main {
           ClientService ClientService= new ClientService(ClientRepository);
           AcquisitionService AcquisitionService= new AcquisitionService(AcquisitionRepository);
           Console console = new Console(MovieService, ClientService, AcquisitionService);
+          DataBase dataBase = new DataBase(MovieService,ClientService,AcquisitionService);
           //console.addMovies();
+          dataBase.run();
           console.runConsole();
         }
 

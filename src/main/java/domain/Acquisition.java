@@ -1,14 +1,13 @@
 package domain;
 
 
-import domain.Pair;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Acquisition extends BaseEntity<Pair<Long,Long>> {
     private double priceBought;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy"); //normalise date
-    private Date date;
+    private Date date ;
     public Acquisition(){
 
     }
@@ -22,8 +21,8 @@ public class Acquisition extends BaseEntity<Pair<Long,Long>> {
         return priceBought;
     }
 
-    public SimpleDateFormat getDate() {
-        return dateFormat;
+    public Date getDate() {
+        return date;
     }
 
     public void setPriceBought(double priceBought) {
