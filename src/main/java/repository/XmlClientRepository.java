@@ -51,7 +51,7 @@ public class XmlClientRepository {
         Document document = DocumentBuilderFactory
                 .newInstance()
                 .newDocumentBuilder()
-                .parse("./data/clientstore.xml");
+                .parse("clientstore.xml");
 
         Element root = document.getDocumentElement();
 
@@ -77,7 +77,7 @@ public class XmlClientRepository {
         Document document = DocumentBuilderFactory
                 .newInstance()
                 .newDocumentBuilder()
-                .parse("./data/clientstore.xml");
+                .parse("clientstore.xml");
 
         Element root = document.getDocumentElement();
         Node clientNode = clientToNode(client, document);
@@ -87,7 +87,7 @@ public class XmlClientRepository {
                 .newInstance()
                 .newTransformer();
         transformer.transform(new DOMSource(document),
-                new StreamResult(new File("./data/bookstore2.xml")));
+                new StreamResult(new File("clientstore.xml")));
     }
 
     public static Node clientToNode(Client client, Document document) {

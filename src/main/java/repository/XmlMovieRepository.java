@@ -91,7 +91,7 @@ public class XmlMovieRepository{
         Document document = DocumentBuilderFactory
                 .newInstance()
                 .newDocumentBuilder()
-                .parse("./data/moviestore.xml");
+                .parse("moviestore.xml");
 
         Element root = document.getDocumentElement();
         Node movieNode = movieToNode(movie, document);
@@ -101,7 +101,7 @@ public class XmlMovieRepository{
                 .newInstance()
                 .newTransformer();
         transformer.transform(new DOMSource(document),
-                new StreamResult(new File("./data/bookstore2.xml")));
+                new StreamResult(new File("moviestore.xml")));
     }
 
     public static Node movieToNode(Movie movie, Document document) {

@@ -186,6 +186,43 @@ public class DataBase {
         preparedStatement.executeUpdate();
     }
 
+    private static List<Client> getClientsWithMoneyGreater(double money) throws SQLException {
+        List<domain.Client> result = new ArrayList<>();
+        String sql = "select * from client where moneyspent >" + money;
+
+        Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        PreparedStatement preparedStatement =
+                connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            Long id = resultSet.getLong("id");
+            String name = resultSet.getString("name");
+            double moneySpent = resultSet.getDouble("moneyspent");
+            domain.Client client = new domain.Client(name, moneySpent);
+            client.setId(id);
+            result.add(client);
+        }
+        return result;
+    }
+    private static List<Client> getBestClient() throws SQLException {
+        List<domain.Client> result = new ArrayList<>();
+        String sql = "select * from client where moneyspent= (select max(moneyspent) from client)";
+
+        Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        PreparedStatement preparedStatement =
+                connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            Long id = resultSet.getLong("id");
+            String name = resultSet.getString("name");
+            double moneySpent = resultSet.getDouble("moneyspent");
+            domain.Client client = new domain.Client(name, moneySpent);
+            client.setId(id);
+            result.add(client);
+        }
+        return result;
+    }
+
     private static void updateMovie(Movie movie) throws SQLException {
         String sql = "update movie set name=?, type=?, rating=?, price=? where id=?";
 
@@ -231,6 +268,10 @@ public class DataBase {
             addMovies();
             addClients();
             addAcquisitions();
+            System.out.println("~~~~~~~~~~~~~~~~~~~");
+            //System.out.println(getClientsWithMoneyGreater(100));
+            System.out.println(getBestClient());
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

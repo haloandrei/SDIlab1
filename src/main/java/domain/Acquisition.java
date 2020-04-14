@@ -24,6 +24,9 @@ public class Acquisition extends BaseEntity<Pair<Long,Long>> {
     public Date getDate() {
         return date;
     }
+    public String getFromatedDate(){
+        return dateFormat.format(date);
+    }
 
     public void setPriceBought(double priceBought) {
         this.priceBought = priceBought;
@@ -46,7 +49,7 @@ public class Acquisition extends BaseEntity<Pair<Long,Long>> {
         return "Acquisition{" +
                 "priceBought=" + priceBought +
 
-                ", date=" + date +
+                ", date=" + dateFormat.format(date) +
                 '}';
     }
 }

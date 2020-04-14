@@ -4,10 +4,14 @@ import domain.Acquisition;
 import domain.Client;
 import domain.Movie;
 import domain.validators.ValidatorException;
+import org.xml.sax.SAXException;
+import repository.XmlAcquisitionRepository;
 import service.AcquisitionService;
 import service.ClientService;
 import service.MovieService;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,14 +28,19 @@ public class Console {
         this.acquisitionService = acquisitionService;
     }
 
-    public void runConsole() {
+    public void runConsole() throws ParserConfigurationException, TransformerException, SAXException, IOException {
 
         printAllMovies();
         printAllClients();
         printAllAcquisitions();
         Scanner myInput = new Scanner( System.in );
-        int rating = myInput.nextInt();
-        printFilteredMovie(rating);
+        //int rating = myInput.nextInt();
+        //printFilteredMovie(rating);
+        System.out.println("da");
+        Acquisition acquisition = acquisitionService.getAllAcquisition().iterator().next();
+        System.out.println("da");
+        XmlAcquisitionRepository.saveacquisition(acquisition);
+
     }
 
     private void printAllMovies() {

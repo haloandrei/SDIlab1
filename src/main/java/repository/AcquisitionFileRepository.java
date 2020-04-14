@@ -77,7 +77,7 @@ public class AcquisitionFileRepository extends InMemoryRepository<Pair<Long, Lon
 
         try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
             bufferedWriter.write(
-                    entity.getId() + "," + entity.getPriceBought() + "," + entity.getDate());
+                    entity.getId() + "," + entity.getPriceBought() + "," + entity.getDateFormat().format(entity.getDate()));
             bufferedWriter.newLine();
         } catch (IOException e) {
             e.printStackTrace();

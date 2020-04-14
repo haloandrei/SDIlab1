@@ -8,6 +8,7 @@ import domain.validators.Validator;
 
 import domain.Pair;
 
+import org.xml.sax.SAXException;
 import repository.AcquisitionFileRepository;
 import repository.MovieFileRepository;
 import repository.ClientFileRepository;
@@ -18,9 +19,13 @@ import service.MovieService;
 import ui.Console;
 import ui.DataBase;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
+
 public class main {
 
-        public static void main(String args[]) {
+        public static void main(String args[]) throws ParserConfigurationException, IOException, SAXException, TransformerException {
 
           Pair<Long,Long> t = new Pair<>(1L,22L);
 
