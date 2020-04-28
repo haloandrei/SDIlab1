@@ -1,11 +1,10 @@
 package com.haloandrei.socket.common.domain;
 
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Acquisition extends BaseEntity<Pair<Long,Long>> {
+public class Acquisition extends com.haloandrei.socket.common.domain.BaseEntity<Pair<Long,Long>> {
     private double priceBought;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy"); //normalise date
     private Date date ;
