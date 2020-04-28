@@ -1,5 +1,6 @@
 package com.haloandrei.socket.common;
 
+
 import java.io.Serializable;
 
 public class Message<T> implements Serializable {
