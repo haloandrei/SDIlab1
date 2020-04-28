@@ -1,2 +1,5 @@
 rootProject.name = 'MPPLab2'
+include 'common'
+include 'server'
+include 'client'
 

@@ -1,23 +1,23 @@
-import domain.Acquisition;
-import domain.Movie;
-import domain.Client;
-import domain.validators.AcquisitionValidator;
-import domain.validators.MovieValidator;
-import domain.validators.ClientValidator;
-import domain.validators.Validator;
+import com.haloandrei.domain.Acquisition;
+import com.haloandrei.domain.Movie;
+import com.haloandrei.domain.Client;
+import com.haloandrei.domain.validators.AcquisitionValidator;
+import com.haloandrei.domain.validators.MovieValidator;
+import com.haloandrei.domain.validators.ClientValidator;
+import com.haloandrei.domain.validators.Validator;
 
-import domain.Pair;
+import com.haloandrei.domain.Pair;
 
 import org.xml.sax.SAXException;
-import repository.AcquisitionFileRepository;
-import repository.MovieFileRepository;
-import repository.ClientFileRepository;
-import repository.Repository;
-import service.AcquisitionService;
-import service.ClientService;
-import service.MovieService;
-import ui.Console;
-import ui.DataBase;
+import com.haloandrei.repository.AcquisitionFileRepository;
+import com.haloandrei.repository.MovieFileRepository;
+import com.haloandrei.repository.ClientFileRepository;
+import com.haloandrei.repository.Repository;
+import com.haloandrei.service.AcquisitionService;
+import com.haloandrei.service.ClientService;
+import com.haloandrei.service.MovieService;
+import com.haloandrei.ui.Console;
+import com.haloandrei.ui.DataBase;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;

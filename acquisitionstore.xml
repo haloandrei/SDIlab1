@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<acquisitionstore>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><acquisitionstore>
 
-</acquisitionstore>
+<acquisition date="11-03-2020"><priceBought>123.0</priceBought><id>(1, 1)</id></acquisition><acquisition date="11-03-2020"><priceBought>123.0</priceBought><id>(1, 1)</id></acquisition></acquisitionstore>
