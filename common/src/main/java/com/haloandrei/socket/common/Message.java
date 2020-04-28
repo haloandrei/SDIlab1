@@ -1,23 +1,27 @@
 package com.haloandrei.socket.common;
 
-import java.io.*;
 
-/**
- * Created by radu.
- */
-public class Message {
-    public static final int PORT = 1234;
+import java.io.Serializable;
+
+public class Message<T> implements Serializable {
+    public static final int PORT = 5431;
     public static final String HOST = "localhost";
 
     private String header;
-    private String body;
+    private T body;
+    private String error;
 
     public Message() {
     }
 
-    public Message(String header, String body) {
+    public Message(String header, T body) {
         this.header = header;
         this.body = body;
+    }
+
+    public Message(String header, T body, String error) {
+        this.header = header;
+        this.error = error;
     }
 
     public String getHeader() {
@@ -28,29 +32,28 @@ public class Message {
         this.header = header;
     }
 
-    public String getBody() {
+    public T getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(T body) {
         this.body = body;
     }
 
-    public void writeTo(OutputStream os) throws IOException {
-        os.write((header + System.lineSeparator() + body + System.lineSeparator()).getBytes());
+    public String getError() {
+        return error;
     }
 
-    public void readFrom(InputStream is) throws IOException {
-        var br = new BufferedReader(new InputStreamReader(is));
-        header = br.readLine();
-        body = br.readLine();
+    public void setError(String error) {
+        this.error = error;
     }
 
     @Override
     public String toString() {
         return "Message{" +
                 "header='" + header + '\'' +
-                ", body='" + body + '\'' +
+                ", body=" + body +
+                ", error='" + error + '\'' +
                 '}';
     }
 }

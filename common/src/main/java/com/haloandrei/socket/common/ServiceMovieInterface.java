@@ -10,13 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 public interface ServiceMovieInterface {
 
-    CompletableFuture<ArrayList<Movie>> getSortedMovies();
-
     void addMovie(Movie movie) throws MovieRentalException;
-
-    void deleteMovie(Integer id) throws MovieRentalException;
-
-    void updateMovie(Movie movie) throws MovieRentalException;
 
     CompletableFuture<ArrayList<Movie>> getAllMovies();
 
