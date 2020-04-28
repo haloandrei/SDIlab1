@@ -4,6 +4,8 @@ package com.haloandrei.socket.client.service;
 import com.haloandrei.socket.client.tcp.TcpClient;
 import com.haloandrei.socket.common.HelloService;
 import com.haloandrei.socket.common.Message;
+import com.haloandrei.socket.common.domain.Client;
+import com.haloandrei.socket.common.domain.Movie;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -35,4 +37,5 @@ public class HelloServiceClient implements HelloService {
             return response.getBody();
         });
     }
+
 }

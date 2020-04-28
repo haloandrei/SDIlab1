@@ -3,6 +3,7 @@ package com.haloandrei.socket.server;
 
 import com.haloandrei.socket.common.HelloService;
 import com.haloandrei.socket.common.Message;
+import com.haloandrei.socket.common.domain.Movie;
 import com.haloandrei.socket.server.service.HelloServiceImpl;
 import com.haloandrei.socket.server.tcp.TcpServer;
 
@@ -39,17 +40,6 @@ public class ServerApp {
 
             });
 
-//        tcpServer.addHandler(HelloService.SAY_BYE, (request) -> {
-//            String name = request.getBody();
-//            Future<String> future = helloService.sayBye(name);
-//            try {
-//                String result = future.get();
-//                return new Message("ok", result);
-//            } catch (InterruptedException | ExecutionException e) {
-//                e.printStackTrace();
-//                return new Message("error", e.getMessage());
-//            }
-//        });
 
             tcpServer.startServer();
 

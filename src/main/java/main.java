@@ -38,8 +38,8 @@ public class main {
           MovieService MovieService = new MovieService(MovieRepository);
           ClientService ClientService= new ClientService(ClientRepository);
           AcquisitionService AcquisitionService= new AcquisitionService(AcquisitionRepository);
-          Console console = new Console(MovieService, ClientService, AcquisitionService);
           DataBase dataBase = new DataBase(MovieService,ClientService,AcquisitionService);
+          Console console = new Console(MovieService, ClientService, AcquisitionService);
           //console.addMovies();
           dataBase.run();
           console.runConsole();

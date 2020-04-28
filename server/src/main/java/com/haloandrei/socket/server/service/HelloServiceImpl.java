@@ -1,6 +1,8 @@
 package com.haloandrei.socket.server.service;
 
 import com.haloandrei.socket.common.HelloService;
+import com.haloandrei.socket.common.domain.Client;
+import com.haloandrei.socket.common.domain.Movie;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -19,6 +21,7 @@ public class HelloServiceImpl implements HelloService {
     public Future<String> sayHello(String name) {
         return executorService.submit(() -> "Hello " + name);
     }
+
 
 //    @Override
 //    public Future<String> sayBye(String name) {

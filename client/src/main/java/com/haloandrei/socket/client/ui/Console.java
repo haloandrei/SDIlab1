@@ -1,5 +1,6 @@
 package com.haloandrei.socket.client.ui;
 import com.haloandrei.socket.common.HelloService;
+import com.haloandrei.socket.common.domain.Movie;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -15,17 +16,23 @@ public class Console {
     }
 
     public void runConsole() {
+        int comm=1;
 
-        String name = "john";
-        Future<String> greetingFuture = helloService.sayHello(name); //non-blocking
-        try {
-            String result = greetingFuture.get(); //blocking :(
-            //todo: client side operations should be non-blocking
+        if( comm == 0) {
+            String name = "john";
+            Future<String> greetingFuture = helloService.sayHello(name); //non-blocking
+            try {
+                String result = greetingFuture.get(); //blocking :(
+                //todo: client side operations should be non-blocking
 
-            System.out.println(result);
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+                System.out.println(result);
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
         }
+
+
+
 
     }
 }
