@@ -3,14 +3,22 @@ package com.haloandrei.socket.server.tcp;
 
 import com.haloandrei.socket.common.HelloServiceException;
 import com.haloandrei.socket.common.Message;
+import com.haloandrei.socket.common.ServiceMovieInterface;
+import com.haloandrei.socket.server.service.Handlers;
+import com.haloandrei.socket.server.service.ServiceMovieImpl;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.function.UnaryOperator;
+import java.util.stream.IntStream;
 
 /**
  * Created by radu.
@@ -18,25 +26,36 @@ import java.util.function.UnaryOperator;
 public class TcpServer {
     private ExecutorService executorService;
     private Map<String, UnaryOperator<Message>> methodHandlers;
+    private ServiceMovieInterface serviceMovie;
+    private Handlers handle;
 
-    public TcpServer(ExecutorService executorService) {
+    public TcpServer(ServiceMovieInterface serviceMovie) {
+        this.serviceMovie = serviceMovie;
         this.methodHandlers = new HashMap<>();
-        this.executorService = executorService;
+        this.handle = new Handlers(serviceMovie);
+        this.executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     }
 
     public void addHandler(String methodName, UnaryOperator<Message> handler) {
         methodHandlers.put(methodName, handler);
     }
 
-    public void startServer() {
+    public void startServer() throws Exception {
+
         try (var serverSocket = new ServerSocket(Message.PORT)) {
-            while (true) {
-                Socket client = serverSocket.accept();
+            IntStream.iterate(1, i -> i + 1).forEach(val -> {
+                Socket client = null;
+                try {
+                    client = serverSocket.accept();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 executorService.submit(new ClientHandler(client));
-            }
+            });
         } catch (IOException e) {
-            throw new HelloServiceException("error connecting clients", e);
+            throw new Exception("error connecting clients", e);
         }
+        executorService.shutdown();
     }
 
     private class ClientHandler implements Runnable {
@@ -48,27 +67,20 @@ public class TcpServer {
 
         @Override
         public void run() {
-            try (var is = socket.getInputStream();
-                 var os = socket.getOutputStream()) {
-                Message request = new Message();
-                request.readFrom(is);
-                System.out.println("received request: " + request);
+            CompletableFuture.supplyAsync(()->{
+                try (var iss = socket.getInputStream();
+                     var oss = socket.getOutputStream();
+                     var os = new ObjectOutputStream(oss);
+                     var is = new ObjectInputStream(iss);) {
+                    Message request = (Message) is.readObject();
 
-//                System.out.println(request.getHeader());
-//                System.out.println(request.getBody());
-                //efvpsekojg
+                    Message response = handle.getMethodHandlers().get(request.getHeader()).apply(request);
 
-                //given the request header? (method name) and body (method args),
-                // execute a handler and get the result of the method execution (of type message)
+                    os.writeObject(response);
 
-                Message response = methodHandlers.get(request.getHeader())
-                        .apply(request);
-//                Message response = new Message();
-                response.writeTo(os);
-
-            } catch (IOException e) {
-                throw new HelloServiceException("error processing client", e);
-            }
+                } catch (IOException | ClassNotFoundException e) {
+                    System.out.println("error processing client" + e.getMessage());
+                } return null;});
         }
     }
 }

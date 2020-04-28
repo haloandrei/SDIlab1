@@ -12,6 +12,12 @@ public interface ServiceMovieInterface {
 
     void addMovie(Movie movie) throws MovieRentalException;
 
+
+    void deleteMovie(Long id) throws MovieRentalException;
+
+    void updateMovie(Movie movie) throws MovieRentalException;
+
+
     CompletableFuture<ArrayList<Movie>> getAllMovies();
 
 }
